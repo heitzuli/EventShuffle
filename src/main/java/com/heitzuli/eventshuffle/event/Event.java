@@ -6,10 +6,10 @@ import java.util.Map;
 import java.util.Set;
 
 public class Event {
-    private int id;
-    private final String name;
-    private final Set<LocalDate> dates;
-    private final Map<LocalDate, Set<String>> votes = new HashMap<>();
+    private int id; // Id of event
+    private final String name; // name of event
+    private final Set<LocalDate> dates; // date options for event
+    private final Map<LocalDate, Set<String>> votes = new HashMap<>(); // per date, a set of persons
 
     // Event must have name, dates
     public Event(String name, Set<LocalDate> dates) {
