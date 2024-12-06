@@ -21,4 +21,11 @@ public class EventService {
         database.add(event);
         return event.getId();
     }
+
+    public Event getEvent(int id) {
+        return database.stream()
+                .filter(event -> event.getId() == id)
+                .findFirst()
+                .orElse(null);
+    }
 }

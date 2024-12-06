@@ -22,4 +22,9 @@ public class EventController {
         var id = eventService.createEvent(request);
         return new CreateResponse(id);
     }
+
+    @GetMapping(path = "/{id}", produces = "application/json")
+    public Event getEvent(@PathVariable int id) {
+        return eventService.getEvent(id);
+    }
 }

@@ -21,9 +21,12 @@ POST http://localhost:8080/api/v1/event
 Content-Type: application/json
 
 {
-  "name": "Turner and Swann Wedding",
+  "name": "Turner and Swann's Wedding",
   "dates": ["1728-10-01", "1728-10-02", "1728-10-03"]
 }
 
 ### List all events
 GET http://localhost:8080/api/v1/event/list
+
+### Get Turner and Swann's wedding
+GET http://localhost:8080/api/v1/event/3
