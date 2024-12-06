@@ -22,4 +22,8 @@ public class EventList {
     public Set<ListEvent> getEvents() {
         return events;
     }
+
+    public Integer addEvent() {
+        return 0;
+    }
 }

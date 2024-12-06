@@ -1,0 +1,29 @@
+### Create new event
+POST http://localhost:8080/api/v1/event
+Content-Type: application/json
+
+{
+  "name": "Captain Jack's Birthday",
+  "dates": ["1728-03-14", "1728-03-23"]
+}
+
+### Create new event
+POST http://localhost:8080/api/v1/event
+Content-Type: application/json
+
+{
+  "name": "Anamaria's revenge",
+  "dates": ["1729-05-01", "1729-05-02", "1729-05-03", "1729-05-04", "1729-05-05"]
+}
+
+### Create new event
+POST http://localhost:8080/api/v1/event
+Content-Type: application/json
+
+{
+  "name": "Turner and Swann Wedding",
+  "dates": ["1728-10-01", "1728-10-02", "1728-10-03"]
+}
+
+### List all events
+GET http://localhost:8080/api/v1/event/list

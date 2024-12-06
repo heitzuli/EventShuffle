@@ -1,8 +1,6 @@
 package com.heitzuli.eventshuffle.event;
 
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/api/v1/event")
@@ -17,5 +15,11 @@ public class EventController {
     public EventList getEventList() {
         // Create new event list from the events in the service
         return new EventList(eventService.getEvents());
+    }
+
+    @PostMapping(path = "", produces = "application/json")
+    public CreateResponse createEvent(@RequestBody CreateRequest request) {
+        var id = eventService.createEvent(request);
+        return new CreateResponse(id);
     }
 }

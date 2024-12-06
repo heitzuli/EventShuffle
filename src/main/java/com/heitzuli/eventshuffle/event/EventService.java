@@ -13,4 +13,12 @@ public class EventService {
     public Set<Event> getEvents() {
         return database;
     }
+
+    public int createEvent(CreateRequest request) {
+        Event event = new Event(request.name(), request.dates());
+        int id = database.size() + 1;
+        event.setId(id);
+        database.add(event);
+        return event.getId();
+    }
 }
