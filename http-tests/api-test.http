@@ -30,3 +30,12 @@ GET http://localhost:8080/api/v1/event/list
 
 ### Get Turner and Swann's wedding
 GET http://localhost:8080/api/v1/event/3
+
+### Vote on revenge
+POST http://localhost:8080/api/v1/event/2/vote
+Content-Type: application/json
+
+{
+  "name": "Barbosa",
+  "votes": ["1729-05-01"]
+}

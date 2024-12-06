@@ -27,4 +27,9 @@ public class EventController {
     public Event getEvent(@PathVariable int id) {
         return eventService.getEvent(id);
     }
+
+    @PostMapping(path = "/{id}/vote", produces = "application/json")
+    public Event voteEvent(@PathVariable int id, @RequestBody VoteRequest request) {
+        return eventService.vote(id, request);
+    }
 }

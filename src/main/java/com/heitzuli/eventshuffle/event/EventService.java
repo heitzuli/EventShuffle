@@ -28,4 +28,10 @@ public class EventService {
                 .findFirst()
                 .orElse(null);
     }
+
+    public Event vote(int id, VoteRequest request) {
+        Event event = getEvent(id);
+        event.addVote(request.name(), request.votes());
+        return event;
+    }
 }
