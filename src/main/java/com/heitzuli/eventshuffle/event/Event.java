@@ -2,11 +2,12 @@ package com.heitzuli.eventshuffle.event;
 
 import java.time.LocalDate;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
 
 public class Event {
-    private int id; // Id of event
+    private int id; // ID of event
     private final String name; // name of event
     private final Set<LocalDate> dates; // date options for event
     private final Map<LocalDate, Set<String>> votes = new HashMap<>(); // per date, a set of persons
@@ -35,5 +36,20 @@ public class Event {
 
     public Map<LocalDate, Set<String>> getVotes() {
         return votes;
+    }
+
+    public void addVote(String person, Set<LocalDate> dates) {
+        // Goes through all sets of people who voted and throws an exception if this person is in any of the sets
+        var hasAlreadyVoted = votes.values().stream().anyMatch(people -> people.contains(person));
+        if (hasAlreadyVoted) {
+            throw new IllegalArgumentException("person " + person + " is already voted");
+        }
+
+        dates.forEach(date-> { // check existing dates if date exists
+            if (!votes.containsKey(date)) { // if date doesn't exist
+                votes.put(date, new HashSet<>()); // create new date
+            }
+            votes.get(date).add(person); // if date exists, add person
+        });
     }
 }
