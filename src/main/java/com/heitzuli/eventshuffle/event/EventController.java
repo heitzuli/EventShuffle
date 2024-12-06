@@ -32,4 +32,9 @@ public class EventController {
     public Event voteEvent(@PathVariable int id, @RequestBody VoteRequest request) {
         return eventService.vote(id, request);
     }
+
+    @GetMapping(path = "/{id}/results", produces = "application/json")
+    public VoteResult getResult(@PathVariable int id) {
+        return eventService.getResult(id);
+    }
 }

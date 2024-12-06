@@ -39,3 +39,6 @@ Content-Type: application/json
   "name": "Barbosa",
   "votes": ["1729-05-01"]
 }
+
+### Get the best date for the revenge
+GET http://localhost:8080/api/v1/event/2/results

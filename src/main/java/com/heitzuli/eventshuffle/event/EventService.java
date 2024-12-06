@@ -34,4 +34,10 @@ public class EventService {
         event.addVote(request.name(), request.votes());
         return event;
     }
+
+    public VoteResult getResult(int id) {
+        Event event = getEvent(id);
+        var suitableDates = EventLogic.findSuitableDates(event);
+        return new VoteResult(id, event.getName(), suitableDates);
+    }
 }
