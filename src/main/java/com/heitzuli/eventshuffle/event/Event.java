@@ -44,7 +44,13 @@ public class Event {
         if (hasAlreadyVoted) {
             throw new IllegalArgumentException("person " + person + " is already voted");
         }
+        // all dates in the vote need to be part of the possible event dates
+        var hasInvalidDate = !this.dates.containsAll(dates);
+        if (hasInvalidDate) {
+            throw new IllegalArgumentException("dates " + dates + " are invalid");
+        }
 
+        // Add the votes
         dates.forEach(date-> { // check existing dates if date exists
             if (!votes.containsKey(date)) { // if date doesn't exist
                 votes.put(date, new HashSet<>()); // create new date

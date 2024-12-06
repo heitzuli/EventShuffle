@@ -39,4 +39,17 @@ class EventTest {
 
         assertThrows(IllegalArgumentException.class, () -> event.addVote("Bob", Set.of(date)));
     }
+
+    @Test
+    @DisplayName("Throws an exception if person votes for a date that's not an option")
+    void invalidDate() {
+        // create new event
+        Set<LocalDate> dates = new HashSet<>();
+        LocalDate date = LocalDate.parse("2020-01-01");
+        LocalDate invalidDate = LocalDate.parse("2020-01-02");
+        dates.add(date);
+        Event event = new Event("X", dates);
+
+        assertThrows(IllegalArgumentException.class, () -> event.addVote("Bob", Set.of(invalidDate)));
+    }
 }
