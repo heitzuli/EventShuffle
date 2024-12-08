@@ -10,20 +10,18 @@ _"You're the one who insisted on bringing the bloody mermaid!"_
 ```mermaid
 erDiagram
     EVENT ||--|{ DATE : "has as options"
-    EVENT ||--o{ VOTE : "has"
     EVENT {
-        int id
+        int event_id
         varchar(250) name
     }
     DATE ||--o{ VOTE : "is voted on by"
     DATE {
-        int id
+        int date_id
         int event_id
         date date
     }
     VOTE {
-        int id
-        int event_id
+        int vote_id
         int date_id
         varchar(250) person
     }
