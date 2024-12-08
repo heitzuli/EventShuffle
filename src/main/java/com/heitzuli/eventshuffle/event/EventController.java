@@ -1,5 +1,6 @@
 package com.heitzuli.eventshuffle.event;
 
+import com.heitzuli.eventshuffle.event.model.Event;
 import org.springframework.web.bind.annotation.*;
 
 @RestController

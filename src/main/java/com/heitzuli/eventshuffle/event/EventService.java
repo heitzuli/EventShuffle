@@ -1,9 +1,13 @@
 package com.heitzuli.eventshuffle.event;
 
+import com.heitzuli.eventshuffle.event.model.Event;
+import com.heitzuli.eventshuffle.event.model.EventDate;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
 import java.util.HashSet;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 @Service
 public class EventService {
@@ -15,7 +19,11 @@ public class EventService {
     }
 
     public int createEvent(CreateRequest request) {
-        Event event = new Event(request.name(), request.dates());
+        // Convert dates form the request into event dates
+        var eventDates = request.dates().stream()
+                .map(date -> new EventDate(date, new HashSet<>()))
+                .collect(Collectors.toSet());
+        Event event = new Event(request.name(), eventDates);
         int id = database.size() + 1;
         event.setId(id);
         database.add(event);
@@ -31,7 +39,9 @@ public class EventService {
 
     public Event vote(int id, VoteRequest request) {
         Event event = getEvent(id);
-        event.addVote(request.name(), request.votes());
+        for (LocalDate vote : request.votes()) {
+            event.addVote(request.name(), vote);
+        }
         return event;
     }
 

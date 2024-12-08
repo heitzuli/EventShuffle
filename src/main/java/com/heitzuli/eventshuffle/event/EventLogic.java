@@ -1,36 +1,35 @@
 package com.heitzuli.eventshuffle.event;
 
-import java.time.LocalDate;
-import java.util.HashMap;
-import java.util.Map;
+import com.heitzuli.eventshuffle.event.model.Event;
+import com.heitzuli.eventshuffle.event.model.EventDate;
+
+import java.util.HashSet;
 import java.util.Set;
 
 public class EventLogic {
-    public static Map<LocalDate, Set<String>> findSuitableDates(Event event) {
-        var votes = event.getVotes();
+    public static Set<EventDate> findSuitableDates(Event event) {
+        var eventDates = event.getDates();
 
-        int maxVotes = getMaxVotes(votes);
+        int maxVotes = getMaxVotes(eventDates);
 
-        // Create empty map
-        Map<LocalDate, Set<String>> popularVote = new HashMap<>();
+        // Create empty set
+        Set<EventDate> suitableDates = new HashSet<>();
         // Loop through all dates
-        for (LocalDate date : votes.keySet()) {
+        for (EventDate eventDate : eventDates) {
             // If date has max amount of votes
-            if (votes.get(date).size() == maxVotes) {
+            if (eventDate.people().size() == maxVotes) {
                 // Add to map
-                popularVote.put(date, votes.get(date));
+                suitableDates.add(eventDate);
             }
         }
-        return popularVote;
+        return suitableDates;
     }
 
-    private static int getMaxVotes(Map<LocalDate, Set<String>> votes) {
+    private static int getMaxVotes(Set<EventDate> eventDates) {
         int maxVotes = 0;
 
-        // Iterate through votes
-        for (Map.Entry<LocalDate, Set<String>> entry : votes.entrySet()) {
-            Set<String> voters = entry.getValue();
-            int voterCount = voters.size(); // Count voters for the current date
+        for (EventDate eventDate : eventDates) {
+            int voterCount = eventDate.people().size(); // Count voters for the current date
 
             // Check if this date has more voters than the current maximum
             if (voterCount > maxVotes) {

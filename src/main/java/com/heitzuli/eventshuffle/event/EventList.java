@@ -1,5 +1,7 @@
 package com.heitzuli.eventshuffle.event;
 
+import com.heitzuli.eventshuffle.event.model.Event;
+
 import java.util.HashSet;
 import java.util.Set;
 

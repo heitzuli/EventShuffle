@@ -2,6 +2,20 @@
 
 ## Event Shuffle
 
+### Domain model
+
+```mermaid
+classDiagram
+    Event --* EventDate
+    class Event{
+        +String name
+    }
+    class EventDate{
+        +LocalDate date
+        +Set<String> people
+    }
+```
+
 ### Database
 While Googling how to document databases I found this [mermaid](https://mermaid.js.org/syntax/entityRelationshipDiagram.html)
 
