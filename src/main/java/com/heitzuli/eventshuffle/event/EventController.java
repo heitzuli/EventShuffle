@@ -5,10 +5,14 @@ import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 
+import java.util.logging.Logger;
+
 @RestController
 @RequestMapping("/api/v1/event")
 public class EventController {
     private final EventService eventService;
+
+    Logger log = Logger.getLogger(EventController.class.getName());
 
     public EventController(EventService eventService) {
         this.eventService = eventService; // Dependency gets injected by Spring
@@ -30,6 +34,7 @@ public class EventController {
     public Event getEvent(@PathVariable int id) {
         var event = eventService.getEvent(id);
         if (event == null) {
+            log.warning("No event found for id " + id);
             throw new ResponseStatusException(HttpStatus.NOT_FOUND);
         }
         return event;
@@ -39,6 +44,7 @@ public class EventController {
     public Event voteEvent(@PathVariable int id, @RequestBody VoteRequest request) {
         var event = eventService.vote(id, request);
         if (event == null) {
+            log.warning("No event found for id " + id);
             throw new ResponseStatusException(HttpStatus.NOT_FOUND);
         }
         return event;
@@ -48,6 +54,7 @@ public class EventController {
     public VoteResult getResult(@PathVariable int id) {
         var event = eventService.getResult(id);
         if (event == null) {
+            log.warning("No event found for id " + id);
             throw new ResponseStatusException(HttpStatus.NOT_FOUND);
         }
         return event;
