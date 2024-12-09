@@ -39,6 +39,9 @@ public class EventService {
 
     public Event vote(int id, VoteRequest request) {
         Event event = getEvent(id);
+        if (event == null) {
+            return null;
+        }
         for (LocalDate vote : request.votes()) {
             event.addVote(request.name(), vote);
         }
@@ -47,6 +50,9 @@ public class EventService {
 
     public VoteResult getResult(int id) {
         Event event = getEvent(id);
+        if (event == null) {
+            return null;
+        }
         var suitableDates = EventLogic.findSuitableDates(event);
         return new VoteResult(id, event.getName(), suitableDates);
     }
