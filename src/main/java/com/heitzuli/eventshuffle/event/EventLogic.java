@@ -7,6 +7,11 @@ import java.util.HashSet;
 import java.util.Set;
 
 public class EventLogic {
+    /**
+     * Find dates with most poeple attached to it
+     * @param event The event
+     * @return set if suitable dates
+     */
     public static Set<EventDate> findSuitableDates(Event event) {
         var eventDates = event.getDates();
 
@@ -25,6 +30,11 @@ public class EventLogic {
         return suitableDates;
     }
 
+    /**
+     * Determines max amount of votes
+     * @param eventDates Set of date possibilities for one event
+     * @return number of maximum votes
+     */
     private static int getMaxVotes(Set<EventDate> eventDates) {
         int maxVotes = 0;
 

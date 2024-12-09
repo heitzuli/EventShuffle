@@ -5,7 +5,9 @@ import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
 class EventShuffleApplicationTests {
-
+    /**
+     * Test that Springboot starts without errors
+     */
     @Test
     void contextLoads() {
     }
