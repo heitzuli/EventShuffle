@@ -11,11 +11,11 @@ Ever needed a simple yet fast way to decide upon a date to get revenge on behalf
 
 MacOS/Linux
 ```sh
-./gradlew
+./gradlew bootRun
 ```
 <br />Windows
 ```Powershell
-gradlew.bat
+gradlew.bat bootRun
 ```
 
 ### How to use the application
