@@ -54,7 +54,7 @@ public class EventService {
     /**
      * Vote for the event with the given ID
      * @param id The id of the event
-     * @param request The vote request
+     * @param request The vote request (stuff from the user)
      * @return the event voted on, or null if the event isn't found
      */
     public Event vote(int id, VoteRequest request) {

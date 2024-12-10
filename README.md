@@ -2,7 +2,13 @@
 
 ## Event Shuffle
 
-Ever needed a simple yet fast way to decide upon a date to get revenge on behalf of Captain Jack? Problems scheduling your keel hauling?
+Ever needed a simple yet fast way to decide upon a date to get revenge on behalf of Captain Jack? Problems scheduling your keel hauling?<br /><br />
+The main feature of the project is managing events and user votes. The EventController class provides endpoints to create events, vote on events, and retrieve event results. The EventService class handles the business logic, such as creating events and calculating voting results.
+
+The createEvent method in EventService takes a CreateRequest object, validates the input, and stores the event.
+The vote method takes an event ID and a VoteRequest, updates the vote count for the specified date, and returns the updated event.
+The getResult method calculates the most suitable dates based on user votes and returns the results.
+
 
 ### How to run the application
 1. Download Java 21 or higher

@@ -14,16 +14,16 @@ public class EventLogic {
      */
     public static Set<EventDate> findSuitableDates(Event event) {
         var eventDates = event.getDates();
-
+        // Count max amount of votes (persons/date)
         int maxVotes = getMaxVotes(eventDates);
 
         // Create empty set
         Set<EventDate> suitableDates = new HashSet<>();
         // Loop through all dates
         for (EventDate eventDate : eventDates) {
-            // If date has max amount of votes
+            // Compare maxVotes with date's amount of people
             if (eventDate.people().size() == maxVotes) {
-                // Add to map
+                // Add to set
                 suitableDates.add(eventDate);
             }
         }
